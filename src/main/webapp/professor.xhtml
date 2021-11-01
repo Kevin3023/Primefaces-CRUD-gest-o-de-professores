@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Cadastro/Edição de Professores</title>
+    </h:head>
+    <h:body>
+        <h:form id="formProfessor">
+            <p:growl showDetail="true" showSummary="true" />
+            
+            <h1>Cadastro de professor</h1>
+            
+            <h:inputHidden value="#{professorBean.professor.id}"/>
+            <h:panelGrid id="painel" columns="2">
+                <p:outputLabel value="Nome"/>
+                <p:inputText value="#{professorBean.professor.nome}"/>
+
+                <p:outputLabel value="Titulação"/>
+                <p:inputText value="#{professorBean.professor.titulacao}"/>
+
+                <p:outputLabel value="Instituto"/>
+                <p:selectOneMenu converter="institutoConverter" value="#{professorBean.professor.instituto}">
+                    <f:selectItem noSelectionOption="true" itemLabel="Selecione o instituto"/>
+                    <f:selectItems value="#{institutoBean.institutos}" var="r" itemLabel="#{r.nome}" itemValue="#{r}"/>
+                </p:selectOneMenu>
+               
+            </h:panelGrid>
+            <p:button outcome="/index.xhtml" value="Cancelar"/>
+            <p:button outcome="/index.xhtml" value="Voltar"/>
+            <p:commandButton action="#{professorBean.salvar()}" value="Salvar" ajax="false"/>
+        </h:form>
+    </h:body>
+</html>
