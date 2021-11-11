@@ -4,26 +4,42 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <h:head>
-        <title>Cadastro/Edição de Institutos</title>
-    </h:head>
-    <h:body>
-        <h:form id="formProfessor">
-            <p:growl showDetail="true" showSummary="true" />
-            
-            <h1>Cadastro de institutos</h1>
-            
-            <h:inputHidden value="#{institutoBean.instituto.id}"/>
-            <h:panelGrid id="painel" columns="2">
-                <p:outputLabel value="Nome"/>
-                <p:inputText value="#{institutoBean.instituto.nome}"/>
-                <p:outputLabel value="Sigla"/>
-                <p:inputText value="#{institutoBean.instituto.sigla}"/>
-            </h:panelGrid>
-            
-            <p:button outcome="/index.xhtml" value="Cancelar"/>
-            <p:button outcome="/index.xhtml" value="Voltar"/>
-            <p:commandButton action="#{institutoBean.salvar()}" value="Salvar" ajax="false"/>
-        </h:form>
-    </h:body>
+    <link rel="shortcut icon" href="resources/images/k.png">
+        <h:head>
+            <title>Cadastro/Edição de Institutos</title>
+            <h:outputStylesheet library="css" name="instituto.css"/>
+        </h:head>
+        <div id="tudo">
+            <h:body>
+                <h:form id="formProfessor">
+                    <p:growl showDetail="true" showSummary="true" />
+                    <div class="conteiner">
+                        <div class="box">
+                            <div style="text-align: center">
+                                <span class="title">
+                                    Novo Instituto
+                                </span>
+                                <br/>
+                                <span class="second-title" style="padding-bottom: 10px;">
+                                    Digite as informações do novo instituto
+                                </span>
+                                
+                                <h:inputHidden value="#{institutoBean.instituto.id}"/>
+                                <h:panelGrid id="painel" columns="2">
+                                    <p:outputLabel value="Nome"/>
+                                    <p:inputText value="#{institutoBean.instituto.nome}"/>
+                                    <p:outputLabel value="Sigla"/>
+                                    <p:inputText value="#{institutoBean.instituto.sigla}"/>
+                                </h:panelGrid>
+                                <br/>
+                                <p:button outcome="/index.xhtml" value="Cancelar"/>
+                                <p:button outcome="/index.xhtml" value="Voltar"/>
+                                <p:commandButton action="#{institutoBean.salvar()}" value="Salvar" ajax="false"/>
+                            </div>
+                        </div>
+                    </div>
+                </h:form>
+            </h:body>
+        </div>
+    </link>
 </html>

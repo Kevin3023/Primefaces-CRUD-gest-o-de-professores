@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <link rel="shortcut icon" href="resources/images/aluno.png">
+        <h:head>
+            <title>Cadastro/Edição de Professores</title>
+            <h:outputStylesheet library="css" name="professor.css"/>
+        </h:head>
+        <h:body>
+            <h:form id="formProfessor">
+                <p:growl showDetail="true" showSummary="true" />
+                <div class="conteiner">
+                    <div class="box" align="center">
+                        <span class="title">
+                            Edição de dados
+                        </span>
+                        <br/>
+                        <br/>
+                        <br/>
+
+
+                        <h:inputHidden value="#{professorBean.professor.id}"/>
+                        <div style="padding: 20px">
+                            <p:inputText style="width: 320px;" placeholder="NOME" value="#{professorBean.professor.nome}"/>
+                        </div>
+
+                        <div style="padding: 20px">
+                            <p:inputText style="width: 320px;" placeholder="TITULAÇÃO" value="#{professorBean.professor.titulacao}"/>
+                        </div>
+                        
+                        <div class="instituto" style="padding: 20px">
+                            <p:outputLabel value="INSTITUTO"/>
+                            <p:selectOneMenu converter="institutoConverter" value="#{professorBean.professor.instituto}">
+                                <f:selectItem noSelectionOption="true" itemLabel="Selecione o instituto"/>
+                                <f:selectItems value="#{institutoBean.institutos}" var="r" itemLabel="#{r.nome}" itemValue="#{r}"/>
+                            </p:selectOneMenu>
+                        </div>
+                        
+                        <div class="botoes">
+                            <p:button outcome="/index.xhtml" value="Cancelar"/>
+                            <p:button outcome="/index.xhtml" value="Voltar"/>
+                            <p:commandButton action="#{professorBean.salvar()}" value="Salvar" ajax="false"/>
+                        </div>
+                    </div>    
+                </div>
+            </h:form>
+        </h:body>
+    </link>
+</html>

@@ -4,33 +4,51 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <h:head>
-        <title>Cadastro/Edição de Professores</title>
-    </h:head>
-    <h:body>
-        <h:form id="formProfessor">
-            <p:growl showDetail="true" showSummary="true" />
-            
-            <h1>Cadastro de professor</h1>
-            
-            <h:inputHidden value="#{professorBean.professor.id}"/>
-            <h:panelGrid id="painel" columns="2">
-                <p:outputLabel value="Nome"/>
-                <p:inputText value="#{professorBean.professor.nome}"/>
+    <link rel="shortcut icon" href="resources/images/k.png">
+        <h:head>
+            <title>Cadastro/Edição de Professores</title>
+            <h:outputStylesheet library="css" name="professor.css"/>
+        </h:head>
+        <h:body>
+            <h:form id="formProfessor">
+                <p:growl showDetail="true" showSummary="true" />
+                <div class="conteiner">
+                    <div class="box" align="center">
+                        <span class="title">
+                            Novo Professor
+                        </span>
+                        <br/>
+                        <span class="second-title" style="padding-bottom: 10px;">
+                            Cadastro para novos professores
+                        </span>
+                        <br/>
 
-                <p:outputLabel value="Titulação"/>
-                <p:inputText value="#{professorBean.professor.titulacao}"/>
 
-                <p:outputLabel value="Instituto"/>
-                <p:selectOneMenu converter="institutoConverter" value="#{professorBean.professor.instituto}">
-                    <f:selectItem noSelectionOption="true" itemLabel="Selecione o instituto"/>
-                    <f:selectItems value="#{institutoBean.institutos}" var="r" itemLabel="#{r.nome}" itemValue="#{r}"/>
-                </p:selectOneMenu>
-               
-            </h:panelGrid>
-            <p:button outcome="/index.xhtml" value="Cancelar"/>
-            <p:button outcome="/index.xhtml" value="Voltar"/>
-            <p:commandButton action="#{professorBean.salvar()}" value="Salvar" ajax="false"/>
-        </h:form>
-    </h:body>
+                        <h:inputHidden value="#{professorBean.professor.id}"/>
+                        <div style="padding: 20px">
+                            <p:inputText style="width: 320px;" placeholder="Nome" value="#{professorBean.professor.nome}"/>
+                        </div>
+
+                        <div style="padding: 20px">
+                            <p:inputText style="width: 320px;" placeholder="Titulação" value="#{professorBean.professor.titulacao}"/>
+                        </div>
+                        
+                        <div class="instituto" style="padding: 20px">
+                            <p:outputLabel value="INSTITUTO"/>
+                            <p:selectOneMenu style="width: 320px;" converter="institutoConverter" value="#{professorBean.professor.instituto}">
+                                <f:selectItem noSelectionOption="true" itemLabel="Selecione o instituto"/>
+                                <f:selectItems value="#{institutoBean.institutos}" var="r" itemLabel="#{r.nome}" itemValue="#{r}"/>
+                            </p:selectOneMenu>
+                        </div>
+                        
+                        <div class="botoes">
+                            <p:button outcome="/index.xhtml" value="Cancelar"/>
+                            <p:button outcome="/index.xhtml" value="Voltar"/>
+                            <p:commandButton action="#{professorBean.salvar()}" value="Salvar" ajax="false"/>
+                        </div>
+                    </div>    
+                </div>
+            </h:form>
+        </h:body>
+    </link>
 </html>
